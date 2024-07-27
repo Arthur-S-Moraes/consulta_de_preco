@@ -12,15 +12,13 @@ def executar_schedule(intervalo, window, site):
 sg.theme('black')
 
 layout = [
-    [sg.Text('digite o URL de um produto do site da Kabum')],
+    [sg.Text('digite o URL de um produto do site da Kabum',size=(20,1))],
     [sg.Input(key='site')],
     [sg.Text('a cada quantos minutos você deseja verificar o site')],
     [sg.Input(key='tempo')],
-    [sg.Text('Iniciar a primeira vez imediatamente?')],
-    [sg.Checkbox('Sim',key='iniciar_imediatamente')],
-    [sg.Button('Buscar', key='buscar')],
-    [sg.Button('Encerrar programa', key='encerrar',  button_color='RED')],
-    [sg.Output(size=(50,10))],
+    [sg.Text('Iniciar a primeira vez imediatamente?'), sg.Checkbox('Sim',key='iniciar_imediatamente')],
+    [sg.Button('Buscar', key='buscar'), sg.Button('Encerrar programa', key='encerrar',  button_color='RED')],
+    [sg.Output(size=(45,10))],
 ]
 
 window = sg.Window('busca de preço', layout)
@@ -47,7 +45,7 @@ while True:
             thread_bot = Thread(target=executar_schedule,args=(intervalo, window, site), daemon=True)
             thread_bot.start()
             window['buscar'].update(disabled=True)
-        
+
     elif event == 'planilha_atualizada':
         # thread_bot.join()
         print(values['planilha_atualizada'])

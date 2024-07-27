@@ -41,10 +41,14 @@ def projeto_monitorar_preco(window,site):
             produto = wait.until(condicao_esperada.visibility_of_element_located((By.XPATH, "//h1[@class='sc-58b2114e-6 brTtKt']"))).text
             valor = wait.until(condicao_esperada.visibility_of_element_located((By.XPATH, "//h4[@class='sc-5492faee-2 ipHrwP finalPrice']"))).text
             valor = valor.split(' ')[1]
+            return(produto, valor, site)
         except:
-            print('''tivemos algum erro e não foi possivel encontrar o valor do item selecionado
-                use uma URL com o produto que deseja buscar o valor''')
-        return(produto, valor, site)
+            driver.close()
+            input('''
+###########
+tivemos um problema para encontrar o site ou informação desejada, verifique se vc realmente está acessando um produto do site da Kabum
+############
+valor verificar a URL e tentar novamente''')
     def criar_editar_planilha():
         produto, valor, site = buscar_produto()
 
