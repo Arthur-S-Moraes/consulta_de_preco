@@ -1,4 +1,4 @@
-from app import projeto_monitorar_preco
+from monitoramento_de_preco import projeto_monitorar_preco
 import PySimpleGUI as sg
 from threading import Thread
 import schedule
