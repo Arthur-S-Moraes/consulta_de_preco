@@ -10,6 +10,7 @@ from selenium.webdriver.support import expected_conditions as condicao_esperada
 from selenium.common.exceptions import *
 
 def projeto_monitorar_preco(window,site):
+    window.write_event_value('iniciando_automacao','iniciando o navegador')
     def iniciar_driver():
         print('iniciando o programa, aguarde alguns instantes')
         chrome_option = Options()
@@ -34,7 +35,7 @@ def projeto_monitorar_preco(window,site):
         return driver, wait
     def buscar_produto():
         driver, wait = iniciar_driver()
-        print('iniciando o navegador')
+        
         try:
             driver.get(site)
             print('buscando o valor do produto selecionado')
