@@ -40,11 +40,10 @@ while True:
         if values['iniciar_imediatamente'] == True:
             thread_bot = Thread(target=projeto_monitorar_preco,args=(window, site), daemon=True)
             thread_bot.start()
-        else:
-            print(f'programa iniciando em {values["tempo"]} minutos, por favor aguarde')
-            thread_bot = Thread(target=executar_schedule,args=(intervalo, window, site), daemon=True)
-            thread_bot.start()
-            window['buscar'].update(disabled=True)
+        print(f'programa iniciando em {values["tempo"]} minutos, por favor aguarde')
+        thread_bot = Thread(target=executar_schedule,args=(intervalo, window, site), daemon=True)
+        thread_bot.start()
+        window['buscar'].update(disabled=True)
 
     elif event == 'planilha_atualizada':
         # thread_bot.join()
